@@ -156,29 +156,8 @@ public class PlotMe extends JavaPlugin
 				
 		getCommand("plotme").setExecutor(new PMCommand(this));
 				
-		setupUpdater();
-				
 		self = this;
 	}
-	
-	private void setupUpdater()
-	{
-		if (autoUpdate)
-		{
-			if (advancedlogging)
-			{
-				logger.info("Checking for a new update...");
-			}
-			
-			Updater updater = new Updater(this, NAME, this.getFile(), Updater.UpdateType.DEFAULT, false);
-			update = updater.getResult() != Updater.UpdateResult.NO_UPDATE;
-			
-			if (advancedlogging)
-			{
-				logger.info("Update available: " + update);
-			}
-		}
-	}	
 	
 	private void doMetric()
 	{
