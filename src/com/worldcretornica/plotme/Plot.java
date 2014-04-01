@@ -7,13 +7,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashSet;
 import java.util.List;
-
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.block.Biome;
 
 public class Plot implements Comparable<Plot> {
-
 	public String owner;
 	public String world;
 	private HashSet<String> allowed;
@@ -163,6 +161,7 @@ public class Plot implements Comparable<Plot> {
 		return biome;
 	}
 	
+	@Deprecated
 	public String getOwner()
 	{
 		return owner;
@@ -208,6 +207,7 @@ public class Plot implements Comparable<Plot> {
 		return comments.get(i);
 	}
 	
+	@Deprecated
 	public void addAllowed(String name)
 	{
 		if(!isAllowed(name))
@@ -217,6 +217,7 @@ public class Plot implements Comparable<Plot> {
 		}
 	}
 	
+	@Deprecated
 	public void addDenied(String name)
 	{
 		if(!isDenied(name))
@@ -226,6 +227,7 @@ public class Plot implements Comparable<Plot> {
 		}
 	}
 	
+	@Deprecated
 	public void removeAllowed(String name)
 	{
 		String found = "";
@@ -246,6 +248,7 @@ public class Plot implements Comparable<Plot> {
 		}
 	}
 	
+	@Deprecated
 	public void removeDenied(String name)
 	{
 		String found = "";
@@ -284,11 +287,14 @@ public class Plot implements Comparable<Plot> {
 		denied = new HashSet<String>();
 	}
 	
+	@Deprecated
 	public boolean isAllowed(String name)
 	{
 		return isAllowed(name, true, true);
 	}
 	
+	
+	@Deprecated
 	public boolean isAllowed(String name, boolean IncludeStar, boolean IncludeGroup)
 	{
 		if(owner.equalsIgnoreCase(name) || (IncludeStar && owner.equals("*"))) return true;
@@ -310,6 +316,7 @@ public class Plot implements Comparable<Plot> {
 		return false;
 	}
 	
+	@Deprecated
 	public boolean isDenied(String name)
 	{
 		if(isAllowed(name, false, false)) return false;
