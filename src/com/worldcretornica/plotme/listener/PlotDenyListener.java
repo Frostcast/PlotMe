@@ -27,7 +27,7 @@ public class PlotDenyListener implements Listener {
 			if (!idTo.equalsIgnoreCase("")) {
 				Plot plot = PlotManager.getPlotById(p, idTo);
 
-				if (plot != null && plot.isDenied(p.getName())) {
+				if (plot != null && plot.isDenied(p.getUniqueId())) {
 					p.teleport(p.getWorld().getSpawnLocation());
 				}
 			}
@@ -45,8 +45,9 @@ public class PlotDenyListener implements Listener {
 
 			if (!idTo.equalsIgnoreCase("")) {
 				Plot plot = PlotManager.getPlotById(p, idTo);
-
-				if (plot != null && plot.isDenied(p.getName())) {
+				
+				if(plot != null && plot.isDenied(p.getUniqueId()))
+				{
 					event.setTo(PlotManager.getPlotHome(p.getWorld(), plot));
 				}
 			}
@@ -62,8 +63,9 @@ public class PlotDenyListener implements Listener {
 
 			if (!id.equalsIgnoreCase("")) {
 				Plot plot = PlotManager.getPlotById(p, id);
-
-				if (plot != null && plot.isDenied(p.getName())) {
+				
+				if(plot != null && plot.isDenied(p.getUniqueId()))
+				{
 					p.teleport(PlotManager.getPlotHome(p.getWorld(), plot));
 				}
 			}
