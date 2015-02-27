@@ -780,58 +780,6 @@ public class PlotListener implements Listener
 	}	
 	
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
-    public void onEntityDamageByEntity(final EntityDamageByEntityEvent event)
-    {
-        Location l = event.getEntity().getLocation();
-        Entity e = event.getDamager();
-        //TODO config to allow attacking others
-        if(PlotManager.isPlotWorld(l))
-        {
-            if(!(e instanceof Player)){
-                event.setCancelled(true);
-            } else {
-                Player p = (Player) e;
-                boolean canbuild = PlotMe.cPerms(p, "plotme.admin.buildanywhere");
-                String id = PlotManager.getPlotId(l);
-                
-                if(id.equalsIgnoreCase(""))
-                {
-                    if(!canbuild)
-                    {
-                        p.sendMessage(PlotMe.caption("ErrCannotBuild"));
-                        event.setCancelled(true);
-                    }
-                }
-                else
-                {
-                    Plot plot = PlotManager.getPlotById(p,id);
-                    
-                    if (plot == null)
-                    {
-                        if(!canbuild)
-                        {
-                            p.sendMessage(PlotMe.caption("ErrCannotBuild"));
-                            event.setCancelled(true);
-                        }
-                    }
-                    else if(!plot.isAllowed(p.getUniqueId()))
-                    {
-                        if(!canbuild)
-                        {
-                            p.sendMessage(PlotMe.caption("ErrCannotBuild"));
-                            event.setCancelled(true);
-                        }
-                    }
-                    else
-                    {
-                        plot.resetExpire(PlotManager.getMap(l).DaysToExpiration);
-                    }
-                }
-            }
-        }
-    }   
-	
-	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onPlayerEggThrow(final PlayerEggThrowEvent event)
 	{
 		Location l = event.getEgg().getLocation();
